@@ -60,13 +60,14 @@ CREATE TABLE lojas_produtos(
    -- Definindo a chave primária COMPOSTA
    PRIMARY KEY (loja_id, produto_id),
 
-   -- Regras para consistência nas operações de estoque
 
-   
 -- Criando as FKs apontando para as PKs de cada tabela
    
+
+  -- Regras para consistência nas operações de estoque
+   
    -- Se uma loja for excluída, os estoque dela também serão.
-   FOREIGN KEY (loja_id) REFERENCES lojas (id) ON DELETE CASCADE
+   FOREIGN KEY (loja_id) REFERENCES lojas (id) ON DELETE CASCADE,
 
 
 -- 2) Ao tentar excluir um produto, o banco deve impedir a exclusão
