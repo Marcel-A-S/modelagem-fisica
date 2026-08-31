@@ -43,3 +43,33 @@ CREATE TABLE lojas(
     nome VARCHAR(100) NOT NULL
 );
 ```
+
+## Criação da tabela lojas_produtos
+
+Nesta tabela, é necessário definir **dois relacionamentos**, um
+apontando para **produto** e outro apontando para **lojas**
+
+
+```sql
+
+CREATE TABLE lojas_produtos(
+   loja_id INT NOT NULL,
+   produto_id INT NOT NULL,
+   estoque INT NOT NULL,
+
+   -- Definindo a chave primária COMPOSTA
+   PRIMARY KEY (loja_id, produto_id),
+
+   -- Regras para consistência nas operações de estoque
+
+   
+-- Criando as FKs apontando para as PKs de cada tabela
+   
+   -- Se uma loja for excluída, os estoque dela também serão.
+   FOREIGN KEY (loja_id) REFERENCES lojas (id) ON DELETE CASCADE
+
+
+-- 2) Ao tentar excluir um produto, o banco deve impedir a exclusão
+   FOREIGN KEY (produto_id) REFERENCES produtos (id) ON DELETE RESTRICT
+);
+```
