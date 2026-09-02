@@ -14,7 +14,7 @@ CREATE TABLE usuario(
     nome VARCHAR(100) NOT NULL,
     email TEXT,
     senha DECIMAL(10, 2) NOT NULL,
-    tipo_usuario INT NOT NULL,
+    tipo_usuario INT NOT NULL
 );
 ```
 
@@ -29,10 +29,19 @@ CREATE TABLE noticia(
     texto_completo TEXT NOT NULL,
     nome_imagem VARCHAR(100) NOT NULL,
     data_publicacao DATETIME NOT NULL,
-    destaque ENUM(´sim) NOT NULL
+    destaque ENUM('sim', 'nao') NOT NULL
 );
 ```
 
+## Criação da tabela categoria
+
+
+``` sql
+CREATE TABLE categoria(
+    id INT NOT NULL,
+    nome VARCHAR(100)NOT NULL
+);
+```
 
 
 
