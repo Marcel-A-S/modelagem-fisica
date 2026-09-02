@@ -18,18 +18,23 @@ CREATE TABLE usuario(
 );
 ```
 
-
+ 
 ## Criação da tabela noticia
 
 ``` sql
 CREATE TABLE noticia(
-    id INT NOT NULL,
-    titulo VARCHAR(100) NOT NULL,
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(200) NOT NULL,
     resumo VARCHAR(500)NOT NULL,
     texto_completo TEXT NOT NULL,
     nome_imagem VARCHAR(100) NOT NULL,
     data_publicacao DATETIME NOT NULL,
-    destaque ENUM('sim', 'nao') NOT NULL
+    destaque ENUM('sim', 'nao') NOT NULL,
+    id_usuario INT NOT NULL,
+    id_categoria INT NOT NULL,
+
+    FOREIGN KEY (id_categoria) REFERENCES usuario (id),
+    FOREIGN KEY (id_categoria) REFERENCES categoria (id)
 );
 ```
 
@@ -37,9 +42,10 @@ CREATE TABLE noticia(
 
 
 ``` sql
-CREATE TABLE categoria(
+CREATE TABLE categoria (
     id INT NOT NULL,
     nome VARCHAR(100)NOT NULL
+
 );
 ```
 
